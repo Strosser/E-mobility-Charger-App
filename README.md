@@ -1,1 +1,1 @@
-Mobile app using React Native manage to find beer nearest to your location, Cheer's!
+Mobile app using React Native manage to find nearest charging station for electric cars.
