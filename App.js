@@ -6,22 +6,16 @@ import * as SplashScreen from 'expo-splash-screen';
 import LoginScreen from './app/screen/LoginScreen/LoginScreen';
 import { ClerkProvider } from '@clerk/clerk-expo';
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
+import * as SecureStore from 'expo-secure-store';
+
 
 SplashScreen.preventAutoHideAsync();
 
 const tokenCache = {
   async getToken(key) {
     try {
-      const item = await SecureStore.getItemAsync(key);
-      if (item) {
-        console.log(`${key} was used 🔐 \n`);
-      } else {
-        console.log("No values stored under key: " + key);
-      }
-      return item;
-    } catch (error) {
-      console.error("SecureStore get item error: ", error);
-      await SecureStore.deleteItemAsync(key);
+      return SecureStore.getItemAsync(key);
+    } catch (err) {
       return null;
     }
   },
