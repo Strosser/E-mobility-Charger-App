@@ -7,6 +7,8 @@ import LoginScreen from './app/screen/LoginScreen/LoginScreen';
 import { ClerkProvider } from '@clerk/clerk-expo';
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
 import * as SecureStore from 'expo-secure-store';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigation from './app/Navigations/TabNavigation';
 
 
 SplashScreen.preventAutoHideAsync();
@@ -51,7 +53,9 @@ export default function App() {
    publishableKey={'pk_test_ZW5hYmxpbmctcmFtLTI1LmNsZXJrLmFjY291bnRzLmRldiQ'}>
     <View style={styles.container}>
     <SignedIn>
-        <Text>Hello</Text>
+        <NavigationContainer>
+          <TabNavigation/>
+        </NavigationContainer>
       </SignedIn>
       <SignedOut>
           <LoginScreen />
